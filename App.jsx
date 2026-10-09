@@ -1,49 +1,24 @@
 import React, { useState } from 'react';
+import ProductCard from './Productcard';
 
 function App() {
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleClick = () => {
-    alert('Button Clicked!');
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setMessage(`Hello, ${name}! Form submitted successfully.`);
-  };
+  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <h1>Event Handling Example</h1>
+      <h1>Props and State Example</h1>
 
-      {/* onClick Event */}
-      <button onClick={handleClick}>
-        Click Me
+      <ProductCard
+        name="Laptop"
+        price="50000"
+        category="Electronics"
+      />
+
+      <h2>Count: {count}</h2>
+
+      <button onClick={() => setCount(count + 1)}>
+        Increase Count
       </button>
-
-      <br />
-      <br />
-
-      {/* onChange and onSubmit Events */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={handleChange}
-        />
-
-        <button type="submit">
-          Submit
-        </button>
-      </form>
-
-      <h3>{message}</h3>
     </div>
   );
 }
